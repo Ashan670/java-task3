@@ -1,29 +1,34 @@
 package com.models;
-
 import java.sql.Timestamp;
 
-public class Project {
-	
-	private String id;
-	private String projectName;
-	private boolean status;
-	private Timestamp createdAt;
-	private String createdBy;
-	private Timestamp updatedAt;
-	private String updatedBy;
-	
-	
+public class Category {
+    private String id;
+    private String projectId; 
+    private String categoryName;
+    private boolean status;
+    private Timestamp createdAt;
+    private String createdBy;
+    private Timestamp updatedAt;
+    private String updatedBy;
+    
+    
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getProjectName() {
-		return projectName;
+	public String getProjectId() {
+		return projectId;
 	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public boolean isStatus() {
 		return status;
@@ -56,6 +61,7 @@ public class Project {
 		this.updatedBy = updatedBy;
 	}
 
-	
-	
+   
+
+   
 }

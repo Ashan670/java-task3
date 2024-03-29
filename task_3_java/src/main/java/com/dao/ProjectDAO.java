@@ -58,6 +58,42 @@ public class ProjectDAO {
 
         return project;
     }
+    
+    public void deleteProjectById(String id) {
+        String query = "DELETE FROM t_project WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Project with ID " + id + " deleted successfully!");
+
+        } catch (SQLException e) {
+            System.err.println("Error deleting project: " + e.getMessage());
+        }
+    }
+
+    public void updateProject(Project project) {
+        String query = "UPDATE t_project SET pro_name = ?, status = ?, updated_at = ?, updated_by = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, project.getProjectName());
+            preparedStatement.setBoolean(2, project.isStatus());
+            preparedStatement.setTimestamp(3, project.getUpdatedAt());
+            preparedStatement.setString(4, project.getUpdatedBy());
+            preparedStatement.setString(5, project.getId());
+
+            preparedStatement.executeUpdate();
+            System.out.println("Project with ID " + project.getId() + " updated successfully!");
+
+        } catch (SQLException e) {
+            System.err.println("Error updating project: " + e.getMessage());
+        }
+    
+}
 
 
    
